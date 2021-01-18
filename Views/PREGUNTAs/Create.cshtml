@@ -1,0 +1,95 @@
+﻿@model PANDA_MVC_V5.Models.PREGUNTA
+
+@if (Session["USERNAME"] != null)
+{
+    <div class="container text-center p-2 mb-4">
+        <span class="border-bottom border-dark text-dark h1">
+            FORMULARIO DE PREGUNTA
+        </span>
+    </div>
+    <form action="~/PREGUNTAs/Create" method="post">
+        <div class="container">
+            @Html.AntiForgeryToken()
+            <div class="row">
+
+
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="comment">Pregunta:</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PREGUNTA1, new { htmlAttributes = new { @class = "form-control", @style = "height:180px;" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.PREGUNTA1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 justify-content-center">
+
+
+                    <div>
+                        <div class="row mt-5">
+                            <select name="CARRERA"
+                                    class="form-control custom-select bg-white border-md">
+                                <option value="">Escoja su Carrera</option>
+                                <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
+                                <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                <option value="Ingenieria Civil">Ingenieria Civil</option>
+                                <option value="Comunicacion">Comunicacion</option>
+                            </select>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.CARRERA, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div>
+                        <div class="row mt-4">
+                            <select name="TEMA"
+                                    class="form-control custom-select bg-white border-md">
+                                <option value="">Escoja su Tema</option>
+                                <option value="CCNA">CCNA</option>
+                                <option value="Base de Datos">Base de Datos</option>
+                                <option value="Algoritmia">Algoritmia</option>
+                                <option value="Diseño Web">Diseño Web</option>
+                            </select>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TEMA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="form-group" hidden="hidden">
+                    @Html.LabelFor(model => model.USERNAME, "USERNAME", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.USERNAME, new { @Value = @Session["USERNAME"].ToString() })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="checkbox text-dark h3">
+                        <label>
+                            <input type="checkbox" value="" /> Notificar cada
+                            respuesta
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-danger">
+                        Enviar Pregunta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <h2>NO ESTA LOGEADO</h2>
+    @Html.ActionLink("LOGEARSE", "../USUARIOs/Ingreso", "USUARIOs", new { @class = "btn btn-success" })
+}
+<div>
+    @Html.ActionLink("Back to List", "Pregunta")
+</div>

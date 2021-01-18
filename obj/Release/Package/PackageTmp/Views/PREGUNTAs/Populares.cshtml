@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PANDA_MVC_V5.Models.PREGUNTA>
+
+@{
+    ViewBag.Title = "Populares";
+}
+
+<h1 style=" text-align: center;">PREGUNTAS POPULARES DE LOS USUARIOS</h1>
+
+    @foreach (var item in Model)
+    {
+        @Styles.Render("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css")
+        @Scripts.Render("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
+        @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        @Styles.Render("https://use.fontawesome.com/releases/v5.1.0/css/all.css")
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="pb-3" style="width:100%; max-height:300px;">
+                    <form action="" method="post">
+                        <div class="card border-primary rounded-bottom">
+                            <div class="card-header p-0">
+                                <div class="bg-info text-white text-left py-2">
+                                    <p>USUARIO: @Html.DisplayFor(modelItem => item.USUARIO.NOMBRE)</p>
+                                    <p class="m-0">CARRERA: @Html.DisplayFor(modelItem => item.CARRERA)</p>
+                                    <p>TEMA: @Html.DisplayFor(modelItem => item.TEMA)</p>
+                                </div>
+                            </div>
+                            <div class="card-body p-6">
+
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-user text-info" style="font-size:70px;color:blue;"></i></div>
+                                        </div>
+
+                                        <!--
+    <img src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature"
+         style="width:50px;height:40px;">
+    -->
+                                        <div style="width:800px;padding:10px;border:solid;border-color:brown;margin:2px">
+                                            @Html.DisplayFor(modelItem => item.PREGUNTA1)
+                                        </div>
+                                        <div>
+
+                                            @Html.ActionLink("VER", "Details", new { id = item.ID_PREGUNTA }, new { @class = "btn btn-success", @style = "align:center;font-size:25px" })
+                                            <br />
+                                        </div>
+                                        <div><i class="fas fa-check rounded" style="font-size:70px;color:steelblue;"></i></div>
+                                        <br />
+                                        <div>
+                                            <img src="https://www.flaticon.com/premium-icon/icons/svg/3193/3193061.svg" class="img-responsive" style="width: 35px;" />
+                                            @Html.DisplayFor(modelItem => item.NUM_RESP)
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br />
+    }

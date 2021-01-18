@@ -1,0 +1,168 @@
+﻿@model PANDA_MVC_V5.Models.PREGUNTA
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="text-align:center">EDITANDO</h2>
+<br>
+<br>
+<br>
+<div>
+    <!--OCULTAR-->
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal" style="align-content:center">
+            <h4></h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID_PREGUNTA)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CARRERA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CARRERA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CARRERA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TEMA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TEMA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TEMA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PREGUNTA1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PREGUNTA1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PREGUNTA1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" contenteditable="false" hidden="hidden">
+                @Html.LabelFor(model => model.RESUELTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.RESUELTO)
+                        @Html.ValidationMessageFor(model => model.RESUELTO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" contenteditable="false" hidden="hidden">
+                @Html.LabelFor(model => model.FECHA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FECHA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FECHA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" contenteditable="false" hidden="hidden">
+                @Html.LabelFor(model => model.NUM_RESP, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NUM_RESP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NUM_RESP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" contenteditable="false" hidden="hidden">
+                @Html.LabelFor(model => model.USERNAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btn btn-success">
+                    <input type="submit" value="GUARDAR" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Pregunta")
+</div>
+
+
+
+@Styles.Render("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css")
+@Scripts.Render("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
+@Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+@Styles.Render("https://use.fontawesome.com/releases/v5.1.0/css/all.css")
+<div class="container" hidden="hidden">
+    <div class="row justify-content-center">
+        <div class="pb-3" style="width:100%; max-height:300px;">
+            <form action="" method="post">
+                <div class="card border-primary rounded-bottom">
+                    <div class="card-header p-2">
+                        <div class="bg-info text-white text-center py-2">
+                            <p class="m-4"></p>
+                        </div>
+                    </div>
+
+
+                    <div class="container justify-content-center" style="text-align:center">
+                        <div class="justify-content-center">
+                            <div class="form-group">
+                                <label for="comment"></label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PREGUNTA1, new { htmlAttributes = new { @class = "form-control", @style = "height:180px;" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.PREGUNTA1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="justify-content-center">
+
+
+                            <div>
+                                <div class="row mt-3">
+                                    <select name="CARRERA"
+                                            class="form-control custom-select bg-white border-md">
+                                        <option value="">Escoja su Carrera</option>
+                                        <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
+                                        <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                                        <option value="Ingenieria Civil">Ingenieria Civil</option>
+                                        <option value="Comunicacion">Comunicacion</option>
+                                    </select>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.CARRERA, "", new { @class = "text-danger" })
+                            </div>
+
+
+                            <div>
+                                <div class="row mt-4">
+                                    <select name="TEMA"
+                                            class="form-control custom-select bg-white border-md">
+                                        <option value="">Escoja su Tema</option>
+                                        <option value="CCNA">CCNA</option>
+                                        <option value="Base de Datos">Base de Datos</option>
+                                        <option value="Algoritmia">Algoritmia</option>
+                                        <option value="Diseño Web">Diseño Web</option>
+                                    </select>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.TEMA, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <br />
+                        </div>
+
+                        <div class="form-group" style="text-align:center">
+                            <div class="text-center">
+                                @Html.ActionLink("EDITAR", "Edit", new { id = Model.ID_PREGUNTA }, new { @class = "btn btn-warning" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_PANDA_STACKModelStoreContainer" CdmEntityContainer="BD_PANDA_STACK_Entities">
+    <EntitySetMapping Name="PREGUNTA">
+      <EntityTypeMapping TypeName="BD_PANDA_STACKModel.PREGUNTA">
+        <MappingFragment StoreEntitySet="PREGUNTA">
+          <ScalarProperty Name="ID_PREGUNTA" ColumnName="ID_PREGUNTA" />
+          <ScalarProperty Name="CARRERA" ColumnName="CARRERA" />
+          <ScalarProperty Name="TEMA" ColumnName="TEMA" />
+          <ScalarProperty Name="PREGUNTA1" ColumnName="PREGUNTA" />
+          <ScalarProperty Name="RESUELTO" ColumnName="RESUELTO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="NUM_RESP" ColumnName="NUM_RESP" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESPUESTA">
+      <EntityTypeMapping TypeName="BD_PANDA_STACKModel.RESPUESTA">
+        <MappingFragment StoreEntitySet="RESPUESTA">
+          <ScalarProperty Name="ID_RESPUESTA" ColumnName="ID_RESPUESTA" />
+          <ScalarProperty Name="RESP" ColumnName="RESP" />
+          <ScalarProperty Name="C_LIKE" ColumnName="C_LIKE" />
+          <ScalarProperty Name="C_DISLIKE" ColumnName="C_DISLIKE" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="ID_PREGUNTA" ColumnName="ID_PREGUNTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="BD_PANDA_STACKModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

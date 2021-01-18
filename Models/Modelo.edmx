@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_PANDA_STACKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PREGUNTA">
+          <Key>
+            <PropertyRef Name="ID_PREGUNTA" />
+          </Key>
+          <Property Name="ID_PREGUNTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CARRERA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TEMA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PREGUNTA" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RESUELTO" Type="bit" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="NUM_RESP" Type="int" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="RESPUESTA">
+          <Key>
+            <PropertyRef Name="ID_RESPUESTA" />
+          </Key>
+          <Property Name="ID_RESPUESTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RESP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="C_LIKE" Type="int" />
+          <Property Name="C_DISLIKE" Type="int" />
+          <Property Name="TIPO" Type="bit" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="10" />
+          <Property Name="ID_PREGUNTA" Type="int" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DNI" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="PAIS" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PREGUNTA__USERNA__29572725">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="PREGUNTA">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESPUESTA__ID_PR__30F848ED">
+          <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="0..1" />
+          <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PREGUNTA">
+              <PropertyRef Name="ID_PREGUNTA" />
+            </Principal>
+            <Dependent Role="RESPUESTA">
+              <PropertyRef Name="ID_PREGUNTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESPUESTA__USERN__300424B4">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="RESPUESTA">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_PANDA_STACKModelStoreContainer">
+          <EntitySet Name="PREGUNTA" EntityType="Self.PREGUNTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESPUESTA" EntityType="Self.RESPUESTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PREGUNTA__USERNA__29572725" Association="Self.FK__PREGUNTA__USERNA__29572725">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESPUESTA__ID_PR__30F848ED" Association="Self.FK__RESPUESTA__ID_PR__30F848ED">
+            <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+            <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESPUESTA__USERN__300424B4" Association="Self.FK__RESPUESTA__USERN__300424B4">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_PANDA_STACKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PREGUNTA">
+          <Key>
+            <PropertyRef Name="ID_PREGUNTA" />
+          </Key>
+          <Property Name="ID_PREGUNTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CARRERA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TEMA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PREGUNTA1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESUELTO" Type="Boolean" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="NUM_RESP" Type="Int32" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__PREGUNTA__USERNA__29572725" FromRole="PREGUNTA" ToRole="USUARIO" />
+          <NavigationProperty Name="RESPUESTA" Relationship="Self.FK__RESPUESTA__ID_PR__30F848ED" FromRole="PREGUNTA" ToRole="RESPUESTA" />
+        </EntityType>
+        <EntityType Name="RESPUESTA">
+          <Key>
+            <PropertyRef Name="ID_RESPUESTA" />
+          </Key>
+          <Property Name="ID_RESPUESTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RESP" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_LIKE" Type="Int32" />
+          <Property Name="C_DISLIKE" Type="Int32" />
+          <Property Name="TIPO" Type="Boolean" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ID_PREGUNTA" Type="Int32" />
+          <NavigationProperty Name="PREGUNTA" Relationship="Self.FK__RESPUESTA__ID_PR__30F848ED" FromRole="RESPUESTA" ToRole="PREGUNTA" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK__RESPUESTA__USERN__300424B4" FromRole="RESPUESTA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PAIS" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PREGUNTA" Relationship="Self.FK__PREGUNTA__USERNA__29572725" FromRole="USUARIO" ToRole="PREGUNTA" />
+          <NavigationProperty Name="RESPUESTA" Relationship="Self.FK__RESPUESTA__USERN__300424B4" FromRole="USUARIO" ToRole="RESPUESTA" />
+        </EntityType>
+        <Association Name="FK__PREGUNTA__USERNA__29572725">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="PREGUNTA">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESPUESTA__ID_PR__30F848ED">
+          <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="0..1" />
+          <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PREGUNTA">
+              <PropertyRef Name="ID_PREGUNTA" />
+            </Principal>
+            <Dependent Role="RESPUESTA">
+              <PropertyRef Name="ID_PREGUNTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESPUESTA__USERN__300424B4">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="RESPUESTA">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_PANDA_STACK_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PREGUNTA" EntityType="Self.PREGUNTA" />
+          <EntitySet Name="RESPUESTA" EntityType="Self.RESPUESTA" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK__PREGUNTA__USERNA__29572725" Association="Self.FK__PREGUNTA__USERNA__29572725">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESPUESTA__ID_PR__30F848ED" Association="Self.FK__RESPUESTA__ID_PR__30F848ED">
+            <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+            <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESPUESTA__USERN__300424B4" Association="Self.FK__RESPUESTA__USERN__300424B4">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_PANDA_STACKModelStoreContainer" CdmEntityContainer="BD_PANDA_STACK_Entities">
+          <EntitySetMapping Name="PREGUNTA">
+            <EntityTypeMapping TypeName="BD_PANDA_STACKModel.PREGUNTA">
+              <MappingFragment StoreEntitySet="PREGUNTA">
+                <ScalarProperty Name="ID_PREGUNTA" ColumnName="ID_PREGUNTA" />
+                <ScalarProperty Name="CARRERA" ColumnName="CARRERA" />
+                <ScalarProperty Name="TEMA" ColumnName="TEMA" />
+                <ScalarProperty Name="PREGUNTA1" ColumnName="PREGUNTA" />
+                <ScalarProperty Name="RESUELTO" ColumnName="RESUELTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NUM_RESP" ColumnName="NUM_RESP" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESPUESTA">
+            <EntityTypeMapping TypeName="BD_PANDA_STACKModel.RESPUESTA">
+              <MappingFragment StoreEntitySet="RESPUESTA">
+                <ScalarProperty Name="ID_RESPUESTA" ColumnName="ID_RESPUESTA" />
+                <ScalarProperty Name="RESP" ColumnName="RESP" />
+                <ScalarProperty Name="C_LIKE" ColumnName="C_LIKE" />
+                <ScalarProperty Name="C_DISLIKE" ColumnName="C_DISLIKE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ID_PREGUNTA" ColumnName="ID_PREGUNTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="BD_PANDA_STACKModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

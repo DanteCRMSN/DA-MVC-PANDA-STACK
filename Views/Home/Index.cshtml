@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" style="text-align:center">
+        <h3 style="color:red">@ViewBag.Error</h3>
+    </div>
+}
+
+<div class="container">
+    @if (Session["NOMBRE"] != null)
+    {
+        <div class="alert alert-success" style="text-align:center">
+            <h3 style="color:green">HOLA @Session["NOMBRE"].ToString()!!!</h3>
+            <h3 style="color:green">LOGIN SATISFACTORIO</h3>
+        </div>
+        <h1 style="color:darkblue; text-align:center">BIENVENIDO A PANDA STACK!!!</h1>
+        <h3 style="color:black; text-align:center">¿TIENES ALGUNA PREGUNTA?</h3>
+    }
+    else
+    {
+        <h1 style="color:darkblue; text-align:center">BIENVENIDO A PANDA STACK!!!</h1>
+        <h3 style="color:black; text-align:center">¿TIENES ALGUNA PREGUNTA?</h3>
+    }
+<div style="text-align: justify">
+    <!--COLOCAR IMAGEN DE BIENVENIDA-->
+    <div class="container page-top" style="text-align: center">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="https://images.unsplash.com/photo-1540126034813-121bf29033d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"
+                   class="fancybox"
+                   rel="ligthbox">
+                    <img src="https://images.unsplash.com/photo-1540126034813-121bf29033d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"
+                         class="zoom img-fluid"
+                         alt="" />⊂(●(工)●)⊃
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="https://images.unsplash.com/photo-1526716173434-a1b560f2065d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                   class="fancybox"
+                   rel="ligthbox">
+                    <img src="https://images.unsplash.com/photo-1526716173434-a1b560f2065d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                         class="zoom img-fluid"
+                         alt="" />⊂(●(工)●)⊃
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="https://images.unsplash.com/photo-1540998423296-a3cff64987b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+                   class="fancybox"
+                   rel="ligthbox">
+                    <img src="https://images.unsplash.com/photo-1540998423296-a3cff64987b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+                         class="zoom img-fluid"
+                         alt="" />⊂(●(工)●)⊃
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="https://images.unsplash.com/photo-1602567655219-26008f87336c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                   class="fancybox"
+                   rel="ligthbox">
+                    <img src="https://images.unsplash.com/photo-1602567655219-26008f87336c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                         class="zoom img-fluid"
+                         alt="" />⊂(●(工)●)⊃
+                </a>
+            </div>
+        </div>
+    </div>
+    <h2>Somos un grupo de personas que buscamos juntar gente con conocimientos en sus materias mas fuertes, y hacer de ellas ayuda para las personas que necesiten de una ayuda, en cualquier situación.</h2>
+    <h2>Nos complace que este proyecto haya salido a la luz y esperamos que puedan disfrutarlo al maximo.</h2>
+</div>
+</div>

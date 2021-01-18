@@ -1,0 +1,146 @@
+﻿@model PANDA_MVC_V5.Models.USUARIO
+
+@{ ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@Styles.Render("~/wwwroot/css/registro.css")
+@Scripts.Render("~/wwwroot/js/registro.js")
+
+<div class="content">
+    <div class="container text-center p-2 mb-4">
+        <span class="border-bottom border-dark text-dark h1">
+            CREAR NUEVA CUENTA
+        </span>
+    </div>
+    <div class="container h3">
+        <div class="row py-5 mt-4 align-items-center">
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="https://images.unsplash.com/photo-1593526492327-b071f3d5333e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+                     alt=""
+                     class="img-fluid mb-3 d-none d-md-block" />
+                <h1>Bienvenido a PandaStack</h1>
+                <p class="font-italic text-muted mb-0">
+                    Estamos seguros que aqui podras encontrar respuestas a tantas
+                    pr eguntas asi como poder apoyar a nuestra comunidad con tu
+                    conocimiento!
+                </p>
+                <p class="font-italic text-muted">
+                    Reciba saludos de
+                    <a href="/Home/Index" class="text-muted"> <u>El ADMIN</u></a>
+                </p>
+            </div>
+
+            <!-- Registro Form -->
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <form action="~/USUARIOs/Registro" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal" style="text-align:center; align-content:center">
+                        <h4></h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.USERNAME, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+                                @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { placeholder = "Username", @class = "form-control bg-white border-left-0 border-md Password" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger " })
+                        </div>
+
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+
+                                @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { placeholder = "Nombres", @class = "form-control  bg-white border-left-0 border-md" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.APELLIDO, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+
+                                @Html.EditorFor(model => model.APELLIDO, new { htmlAttributes = new { placeholder = "Apellidos", @class = "form-control  bg-white border-left-0 border-md" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.APELLIDO, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.DNI, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-user text-muted"></i>
+                                </span>
+
+                                @Html.EditorFor(model => model.DNI, new { htmlAttributes = new { placeholder = "Dni", @class = "form-control  bg-white border-left-0 border-md" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.DNI, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.PAIS, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10">
+                                <select name="PAIS"
+                                        class="form-control custom-select bg-white border-left-0 border-md">
+                                    <option value="">Escoja su PAIS</option>
+                                    <option value="PERU">PERU</option>
+                                    <option value="BOLIVIA">BOLIVIA</option>
+                                    <option value="ECUADOR">ECUADOR</option>
+                                    <option value="BRAZIL">BRAZIL</option>
+                                    <option value="URUGUAY">URUGUAY</option>
+                                    <option value="CHILE">CHILE</option>
+                                </select>
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.PAIS, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group ">
+                            <!--@Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { placeholder = "Correo Electronico", @class = "form-control  bg-white border-left-0 border-md" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <!--@Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                            <div class="col-md-10 input-group-prepend">
+
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { type = "password", placeholder = "Password", @class = "form-control  bg-white border-left-0 border-md" } })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-lg btn-danger">
+                                REGISTRARSE
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

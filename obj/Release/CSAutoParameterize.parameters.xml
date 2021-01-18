@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=&quot;|DataDirectory|\aspnet-PANDA MVC V5-20210116043355.mdf&quot;;Initial Catalog=&quot;aspnet-PANDA MVC V5-20210116043355&quot;;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\DAN\\source\\repos\\PANDA\ MVC\ V5\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="BD_PANDA_STACK_Entities-Web.config Connection String" description="BD_PANDA_STACK_Entities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.Modelo.csdl|res://*/Models.Modelo.ssdl|res://*/Models.Modelo.msl;&#xD;&#xA;         provider=System.Data.SqlClient;provider connection string=&quot;&#xD;&#xA;         Data Source=SQL5101.site4now.net;Initial Catalog=DB_A6DEA5_crmsnSLG;User Id=DB_A6DEA5_crmsnSLG_admin;Password=BDpanda2021&#xD;&#xA;         ;integrated security=false;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\DAN\\source\\repos\\PANDA\ MVC\ V5\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BD_PANDA_STACK_Entities']/@connectionString" />
+  </parameter>
+</parameters>

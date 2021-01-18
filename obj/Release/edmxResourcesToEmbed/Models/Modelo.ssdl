@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_PANDA_STACKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PREGUNTA">
+    <Key>
+      <PropertyRef Name="ID_PREGUNTA" />
+    </Key>
+    <Property Name="ID_PREGUNTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CARRERA" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="TEMA" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PREGUNTA" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="RESUELTO" Type="bit" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="NUM_RESP" Type="int" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RESPUESTA">
+    <Key>
+      <PropertyRef Name="ID_RESPUESTA" />
+    </Key>
+    <Property Name="ID_RESPUESTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RESP" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="C_LIKE" Type="int" />
+    <Property Name="C_DISLIKE" Type="int" />
+    <Property Name="TIPO" Type="bit" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="10" />
+    <Property Name="ID_PREGUNTA" Type="int" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="USERNAME" />
+    </Key>
+    <Property Name="USERNAME" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="DNI" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="PAIS" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__PREGUNTA__USERNA__29572725">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="PREGUNTA">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESPUESTA__ID_PR__30F848ED">
+    <End Role="PREGUNTA" Type="Self.PREGUNTA" Multiplicity="0..1" />
+    <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PREGUNTA">
+        <PropertyRef Name="ID_PREGUNTA" />
+      </Principal>
+      <Dependent Role="RESPUESTA">
+        <PropertyRef Name="ID_PREGUNTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESPUESTA__USERN__300424B4">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="RESPUESTA" Type="Self.RESPUESTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="RESPUESTA">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_PANDA_STACKModelStoreContainer">
+    <EntitySet Name="PREGUNTA" EntityType="Self.PREGUNTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESPUESTA" EntityType="Self.RESPUESTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__PREGUNTA__USERNA__29572725" Association="Self.FK__PREGUNTA__USERNA__29572725">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESPUESTA__ID_PR__30F848ED" Association="Self.FK__RESPUESTA__ID_PR__30F848ED">
+      <End Role="PREGUNTA" EntitySet="PREGUNTA" />
+      <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESPUESTA__USERN__300424B4" Association="Self.FK__RESPUESTA__USERN__300424B4">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="RESPUESTA" EntitySet="RESPUESTA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

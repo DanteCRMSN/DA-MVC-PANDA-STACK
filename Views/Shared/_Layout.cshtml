@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PandaStack</title>
+
+    @Styles.Render("~/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css")
+    @Styles.Render("~/wwwroot/css/site.css")
+    @Styles.Render("~/wwwroot/css/ingreso.css")
+    @Styles.Render("~/wwwroot/css/registro.css")
+    @Styles.Render("http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+
+    @Styles.Render("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css")
+
+    @RenderSection("Styles", false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menu-icon">
+
+                </div>
+                <div class="logo">PandaStack</div>
+                <div class="menu">
+                    <ul>
+                        @if (Session["NOMBRE"] != null)
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">@Session["USERNAME"].ToString()</a></li>
+                        }
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index" href="~/Home/Index">INICIO</a></li>
+                        <li><a asp-area="" asp-controller="Pregunta" asp-action="Pregunta" href="~/PREGUNTAs/Pregunta">PREGUNTA</a></li>
+                        <li><a asp-area="" asp-controller="Comments" asp-action="Comments" href="~/Comments/GetPosts">PREG AJAX</a></li>
+                        <li><a asp-area="" asp-controller="Populares" asp-action="Populares" href="~/PREGUNTAs/Populares">POPULARES</a></li>
+                        <li><a asp-area="" asp-controller="SinResp" asp-action="SinResp" href="~/PREGUNTAs/SinResp">SIN RESPUESTA</a></li>
+                        @if (Session["NOMBRE"] == null)
+                        {
+                            <li>@Html.ActionLink("LOGIN", "Ingreso", "USUARIOs")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("CERRAR SESION", "Logout", "USUARIOs")</li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    @Styles.Render("http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css")
+    @Styles.Render("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js")
+    @Scripts.Render("https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js")
+    @Scripts.Render("~/wwwroot/lib/jquery/dist/jquery.min.js")
+    @Scripts.Render("~/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js")
+    @Scripts.Render("~/wwwroot/js/site.js")
+    @Scripts.Render("~/wwwroot/js/registro.js")
+    <footer class="border-top footer text-muted bottom">
+        <div class="container">
+            &copy; 2021 - OfPandaStack - <a asp-area="" asp-controller="Home" asp-action="Privacy">
+    Privacy
+    <li><a href="~/Home/politicas_privacidad">Politicas de Privacidad</a></li>
+    <li><a href="~/Home/terminos_condiciones">Terminos y Condiciones</a></li>
+</a>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
